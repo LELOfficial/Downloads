@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download LEL - Easiest Programming Language</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f4f7f9;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            max-width: 550px;
+            width: 100%;
+            text-align: center;
+        }
+        h1 { color: #0078d4; margin-bottom: 10px; }
+        .download-btn {
+            background-color: #0078d4;
+            color: white;
+            padding: 18px 36px;
+            font-size: 18px;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(0, 120, 212, 0.3);
+            margin-bottom: 20px;
+        }
+        .download-btn:hover { background-color: #005a9e; transform: translateY(-2px); }
+        .instructions { text-align: left; margin-top: 20px; padding-top: 30px; border-top: 1px solid #eee; }
+        .step-item { display: flex; gap: 15px; margin-bottom: 15px; align-items: flex-start; }
+        .step-number {
+            background: #0078d4;
+            color: white;
+            width: 24px; height: 24px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 12px; flex-shrink: 0; margin-top: 3px;
+        }
+        .copy-box {
+            display: flex; align-items: center;
+            background: #f0f0f0; padding: 5px 10px;
+            border-radius: 4px; border: 1px solid #ccc;
+            margin-top: 5px; cursor: pointer;
+        }
+        code { font-family: 'Consolas', monospace; color: #d11141; font-weight: bold; flex-grow: 1; }
+        .copy-icon { font-size: 12px; color: #0078d4; font-weight: bold; }
+        /* Toast Notification */
+        .toast {
+            visibility: hidden; min-width: 200px;
+            background-color: #333; color: #fff;
+            text-align: center; border-radius: 4px;
+            padding: 10px; position: fixed;
+            bottom: 30px; left: 50%; transform: translateX(-50%);
+        }
+        .toast.show { visibility: visible; animation: fadein 0.5s, fadeout 0.5s 2.5s; }
+        @keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 30px; opacity: 1;} }
+        @keyframes fadeout { from {bottom: 30px; opacity: 1;} to {bottom: 0; opacity: 0;} }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Get LEL CLI 🚀</h1>
+        <p>Experience the easiest programming language!</p>
+
+        <a href="https://github.com/ProGroupco/lel/archive/refs/heads/main.zip" class="download-btn" download>
+            <span>🪟</span> Download Windows Installer
+        </a>
+
+        <div class="instructions">
+            <h3>🛠️ Installation Steps</h3>
+            <div class="step-item">
+                <div class="step-number">1</div>
+                <div>Extract the zipped file 🗃️🗄️.</div>
+            </div>
+            <div class="step-item">
+                <div class="step-number">2</div>
+                <div>Run the <strong>installer</strong> inside the folder.</div>
+            </div>
+            <div class="step-item">
+                <div class="step-number">3</div>
+                <div>
+                    Go to the installation folder:
+                    <div class="copy-box" onclick="copyPath()">
+                        <code id="path">C:/LEL</code>
+                        <span class="copy-icon">📋 CLICK TO COPY</span>
+                    </div>
+                </div>
+            </div>
+            <div class="step-item">
+                <div class="step-number">4</div>
+                <div>Run <code>shell</code> or <code>shell.py</code> to use the LEL CLI!</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast" class="toast">Path copied!</div>
+
+    <script>
+        function copyPath() {
+            const pathText = document.getElementById('path').innerText;
+            navigator.clipboard.writeText(pathText).then(() => {
+                const toast = document.getElementById('toast');
+                toast.className = "toast show";
+                setTimeout(() => { toast.className = toast.className.replace("show", ""); }, 3000);
+            });
+        }
+    </script>
+</body>
+</html>
